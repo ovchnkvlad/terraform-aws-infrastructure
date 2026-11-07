@@ -42,6 +42,14 @@ jobs:
           hashicorp/terraform:1.17.1
           validate
 
+      - name: Run native Terraform tests
+        run: >-
+          docker run --rm
+          --volume "$PWD:/workspace:ro"
+          --workdir /workspace
+          hashicorp/terraform:1.17.1
+          test
+
       - name: Run TFLint
         run: >-
           docker run --rm
